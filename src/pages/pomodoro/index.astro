@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Timer from "./timer";
 ---
 
 <Layout title="Pomodoro">
@@ -11,6 +12,7 @@ import Layout from "../../layouts/Layout.astro";
 			<!-- 
                 TODO: Add Pomodoro timer
             -->
+			<Timer client:idle />
 		</div>
 	</main>
 </Layout>
