@@ -28,6 +28,9 @@ export default function Timer() {
 			/>
 
 			<PlayButton
+				className="hover:scale-110"
+				disabled={isFinished}
+				type="button"
 				onClick={() => {
 					if (!isPlaying) {
 						play();
