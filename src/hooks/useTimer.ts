@@ -13,6 +13,7 @@ export function useTimer(timerDuration: number = 25 * 60) {
 	const [isPaused, setIsPaused] = useState(false);
 	const [isFinished, setIsFinished] = useState(false);
 	const [isReset, setIsReset] = useState(false);
+	const [Percent, setPercent] = useState(100);
 
 	// Timer control functions
 	const play = useCallback(() => {
@@ -45,6 +46,7 @@ export function useTimer(timerDuration: number = 25 * 60) {
 		const interval = setInterval(() => {
 			if (isPlaying && !isPaused) {
 				tick();
+				setPercent(Math.floor((100 / timerDuration) * time));
 			}
 		}, 1000);
 		return () => clearInterval(interval);
@@ -56,6 +58,7 @@ export function useTimer(timerDuration: number = 25 * 60) {
 		isPaused,
 		isFinished,
 		isReset,
+		Percent,
 		play,
 		pause,
 		reset,
