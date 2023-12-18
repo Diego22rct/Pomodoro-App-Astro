@@ -17,11 +17,7 @@ export default function Timer() {
 			<CircularProgressbar
 				value={Percent}
 				text={
-					isPlaying
-						? `${minutes}:${seconds}`
-						: isFinished
-						? "Finished"
-						: "Ready"
+					isPlaying ? `${minutes}:${seconds}` : isFinished ? "Fin!" : "Listo!"
 				}
 				styles={buildStyles({
 					textColor: "#000",
