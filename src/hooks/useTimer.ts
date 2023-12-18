@@ -6,63 +6,63 @@ import { useCallback, useState, useEffect } from "react";
  * @returns An object containing timer state and functions to control the timer.
  */
 export function useTimer(timerDuration: number = 25 * 60) {
-	// Timer state
+  // Timer state
 
-	const [time, setTime] = useState(timerDuration);
-	const [isPlaying, setIsPlaying] = useState(false);
-	const [isPaused, setIsPaused] = useState(false);
-	const [isFinished, setIsFinished] = useState(false);
-	const [isReset, setIsReset] = useState(false);
-	const [Percent, setPercent] = useState(100);
+  const [time, setTime] = useState(timerDuration);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
+  const [isReset, setIsReset] = useState(false);
+  const [Percent, setPercent] = useState(100);
 
-	// Timer control functions
-	const play = useCallback(() => {
-		setIsPlaying(true);
-	}, []);
+  // Timer control functions
+  const play = useCallback(() => {
+    setIsPlaying(true);
+  }, []);
 
-	const pause = useCallback(() => {
-		setIsPaused(true);
-	}, []);
+  const pause = useCallback(() => {
+    setIsPaused(true);
+  }, []);
 
-	const reset = useCallback(() => {
-		setIsReset(true);
-		setTime(timerDuration); // reset time to timerDuration
-	}, []);
+  const reset = useCallback(() => {
+    setIsReset(true);
+    setTime(timerDuration); // reset time to timerDuration
+  }, []);
 
-	const finish = useCallback(() => {
-		setIsFinished(true);
-	}, []);
+  const finish = useCallback(() => {
+    setIsFinished(true);
+  }, []);
 
-	const tick = useCallback(() => {
-		if (time > 0) {
-			setTime(time - 1);
-		} else {
-			finish();
-		}
-	}, [time, finish]);
+  const tick = useCallback(() => {
+    if (time > 0) {
+      setTime(time - 1);
+    } else {
+      finish();
+    }
+  }, [time, finish]);
 
-	// Interval to call tick every second
-	useEffect(() => {
-		const interval = setInterval(() => {
-			if (isPlaying && !isPaused) {
-				tick();
-				setPercent(Math.floor((100 / timerDuration) * time));
-			}
-		}, 1000);
-		return () => clearInterval(interval);
-	}, [isPlaying, isPaused, tick]);
+  // Interval to call tick every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isPlaying && !isPaused) {
+        tick();
+        setPercent(Math.floor((100 / timerDuration) * time));
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isPlaying, isPaused, tick]);
 
-	return {
-		time,
-		isPlaying,
-		isPaused,
-		isFinished,
-		isReset,
-		Percent,
-		play,
-		pause,
-		reset,
-		finish,
-		tick,
-	};
+  return {
+    time,
+    isPlaying,
+    isPaused,
+    isFinished,
+    isReset,
+    Percent,
+    play,
+    pause,
+    reset,
+    finish,
+    tick,
+  };
 }
