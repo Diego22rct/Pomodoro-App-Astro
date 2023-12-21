@@ -16,19 +16,44 @@ npm create astro@latest -- --template basics
 
 Inside of your Astro project, you'll see the following folders and files:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+📦POMODORO-ASTRO
+ ┣ 📂public
+ ┃ ┣ 📜favicon.svg
+ ┃ ┗ 📜pomodoro-technique.png
+ ┣ 📂src
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂ui
+ ┃ ┃ ┃ ┣ 📂pomodoro
+ ┃ ┃ ┃ ┃ ┣ 📜index.ts
+ ┃ ┃ ┃ ┃ ┣ 📜PauseButton.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜PlayButton.tsx
+ ┃ ┃ ┃ ┣ 📜alert-dialog.tsx
+ ┃ ┃ ┃ ┗ 📜button.tsx
+ ┃ ┃ ┣ 📜Footer.astro
+ ┃ ┃ ┗ 📜SideMenu.astro
+ ┃ ┣ 📂hooks
+ ┃ ┃ ┗ 📜useTimer.ts
+ ┃ ┣ 📂layouts
+ ┃ ┃ ┗ 📜Layout.astro
+ ┃ ┣ 📂lib
+ ┃ ┃ ┗ 📜utils.ts
+ ┃ ┣ 📂pages
+ ┃ ┃ ┣ 📂pomodoro
+ ┃ ┃ ┃ ┣ 📜index.astro
+ ┃ ┃ ┃ ┣ 📜TasksApp.tsx
+ ┃ ┃ ┃ ┗ 📜Timer.tsx
+ ┃ ┃ ┗ 📜index.astro
+ ┃ ┣ 📂styles
+ ┃ ┃ ┗ 📜global.css
+ ┃ ┗ 📜env.d.ts
+ ┣ 📜.gitignore
+ ┣ 📜astro.config.mjs
+ ┣ 📜components.json
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜README.md
+ ┣ 📜tailwind.config.mjs
+ ┗ 📜tsconfig.json
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
