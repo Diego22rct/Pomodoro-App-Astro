@@ -6,6 +6,10 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
+<<<<<<< HEAD
+=======
+		"check": "astro check",
+>>>>>>> delete-astro-check
 		"preview": "astro preview",
 		"astro": "astro"
 	},
