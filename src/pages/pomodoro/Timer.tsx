@@ -34,9 +34,9 @@ export default function Timer() {
 			/>
 
 			<PauseButton className="hover:scale-110" type="button" onClick={pause} /> */}
-
+      <div className="flex flex-col items-center justify-center w-2/5 py-4">
       <Button
-        className="hover:scale-110"
+        className="hover:scale-110 w-16 py-2"
         disabled={isFinished}
           type="button"
         onClick={() => {
@@ -54,7 +54,7 @@ export default function Timer() {
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        strokeWidth={1.5}
+        strokeWidth={2}
         stroke="currentColor"
         className="w-6 h-6"
       >
@@ -78,7 +78,7 @@ export default function Timer() {
       />
     </svg>}
       </Button>
-
+  </div>
       <Button onClick={() => reset()}>Reset</Button>
     </div>
   );
