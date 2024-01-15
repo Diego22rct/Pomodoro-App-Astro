@@ -18,19 +18,27 @@ export function useTimer(timerDuration: number = 25 * 60) {
   // Timer control functions
   const play = useCallback(() => {
     setIsPlaying(true);
+    setIsPaused(false);
   }, []);
 
   const pause = useCallback(() => {
+    setIsPlaying(false);
     setIsPaused(true);
   }, []);
 
   const reset = useCallback(() => {
     setIsReset(true);
+    setIsFinished(false);
+    setIsPaused(true);
+    setIsPlaying(false);
     setTime(timerDuration); // reset time to timerDuration
   }, []);
 
   const finish = useCallback(() => {
     setIsFinished(true);
+    setIsPlaying(false);
+    setIsPaused(true);
+    setIsReset(false);
   }, []);
 
   const tick = useCallback(() => {

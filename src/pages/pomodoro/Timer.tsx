@@ -18,7 +18,7 @@ export default function Timer() {
       <CircularProgressbar
         value={Percent}
         text={
-          isPlaying ? `${minutes}:${seconds}` : isFinished ? "Fin!" : "Listo!"
+          isPlaying? `${minutes}:${seconds}` : isFinished? "Finished" : `${minutes}:${seconds}`
         }
         styles={buildStyles({
           textColor: "#000",
@@ -36,18 +36,23 @@ export default function Timer() {
 
 			<PauseButton className="hover:scale-110" type="button" onClick={pause} /> */}
 
-      <PlayButton
+      <Button
         className="hover:scale-110"
         disabled={isFinished}
-        type="button"
+          type="button"
         onClick={() => {
+          console.log(isPlaying);
           if (!isPlaying) {
             play();
+            console.log("play");
           } else {
             pause();
+            console.log("pause");
           }
         }}
-      />
+      >
+        {isPlaying ? "Pause" : "Play"}
+      </Button>
 
       <Button onClick={() => reset()}>Reset</Button>
     </div>
