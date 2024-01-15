@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Button } from "../button";
+import Task from "../Tasks/ui/Task";
+
 
 export default function TaskApp() {
+	const [addTask, setAddTask] = useState(false);
 	const [Tasks, setTasks] = useState([
 		{
 			id: 1,
@@ -40,24 +42,45 @@ export default function TaskApp() {
 			status: "todo",
 		},
 	]);
+	console.log(addTask);
 	return (
-		<>
-		<h1 className="text-3xl font-bold">Taks To-Do</h1>
-		<div id="tasks" className="my-5">
-			{
-				Tasks.map((task) => (
-					<div id={task.id.toString()} className="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent">
-						<div className="inline-flex items-center space-x-2">
-							<h1 className="text-2xl font-bold">{task.title}</h1>
-							<p className="text-lg">{task.description}</p>
-							<Button>
-								✅
-							</Button>
-						</div>
-					</div>
-				))
-			}
+		<div className="flex flex-col justify-center items-center w-full h-full py-5">
+			{/*
+				TODO: Add functionalty for Todos 
+						Delete
+						Edit
+						Add new todos
+			*/}
+			<h1 className="text-3xl font-bold">Taks To-Do</h1>
+			<div id="tasks" className="my-5">
+				{
+					Tasks.map((task) => (
+						<Task key={task.id} {...task} />
+					))
+				}
 			</div>
-		</>
+			<button className="bg-green-500 text-white py-2 px-4 rounded-md" onClick={() => {
+				console.log("Add Task");
+				setAddTask(!addTask);
+			}}>Add Task</button>
+			{addTask && (
+				<div className="flex flex-col justify-center items-center w-full h-full py-5">
+					<h1 className="text-3xl font-bold">Add Task</h1>
+					<div className="flex flex-col justify-center items-center">
+						<input type="text" className="border border-gray-300 rounded-md px-2 py-1 w-1/2" placeholder="Title" />
+						<input type="text" className="border border-gray-300 rounded-md px-2 py-1 w-1/2" placeholder="Description" />
+						<select name="status" className="border border-gray-300 rounded-md px-2 py-1 w-1/2">
+							<option value="todo">To-Do</option>
+							<option value="in-progress">In-Progress</option>
+							<option value="done">Done</option>
+						</select>
+						<button className="bg-green-500 text-white py-2 px-4 rounded-md">Add Task</button>
+					</div>
+					<div className="flex justify-center items-center">
+						<button className="bg-green-500 text-white py-2 px-4 rounded-md">Cancel</button>
+					</div>
+				</div>
+			)}
+		</div>
 	);
 }
